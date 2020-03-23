@@ -1,0 +1,2 @@
+policyID|string|char8|primary_key,statecode|string|char2|dict,county|string|char32|dict|text_search,eq_site_limit|float,hu_site_limit|float,fl_site_limit|float,fr_site_limit|float,tiv_2011|float,tiv_2012|float,eq_site_deductible|float,hu_site_deductible|float,fl_site_deductible|float,fr_site_deductible|float,point_latitude|float,point_longitude|float,line|string|char16|text_search,construction|string|char32|dict,point_granularity|string
+119736,FL,CLAY COUNTY,498960,498960,498960,498960,498960,792148.9,0,9979.2,0,0,30.102261,-81.711777,Residential,Masonry,1

@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+  kagent:
+    image: kinetica/kagent:latest
+    ports:
+      - "18081:8081"
+    networks:
+      - gpudb-net
+  gpudb-head:
+    image: donstewart/ubuntu:18.04-ssh
+    expose:
+      - "22"
+    ports:
+      - "48080:8080"
+      - "48088:8088"
+      - "49191:9191"
+    tty: true
+    networks:
+      gpudb-net:
+        ipv4_address: 172.20.0.10
+  gpudb-worker:
+    image: donstewart/ubuntu:18.04-ssh
+    expose:
+      - "22"
+    ports:
+      - "38080:8080"
+      - "38088:8088"
+      - "39191:9191"
+    tty: true
+    networks:
+      gpudb-net:
+        ipv4_address: 172.20.0.20
+
+networks:
+  gpudb-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
+secrets:
+  host_ssh_key:
+    file: ~/.ssh/id_rsa
